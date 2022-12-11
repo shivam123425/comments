@@ -1,0 +1,32 @@
+{
+  "name": "react-preview-comments",
+  "version": "0.0.0",
+  "description": "A library to enable realtime feedbacks in the form of preview comments",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/src/index.js",
+  "module": "dist/src/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shivam123425/react-preview-comments.git"
+  },
+  "author": "shivam123425",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shivam123425/react-preview-comments/issues"
+  },
+  "homepage": "https://github.com/shivam123425/react-preview-comments#readme",
+  "devDependencies": {
+    "@types/node": "^18.11.13",
+    "@types/react": "^18.0.26",
+    "react": "^18.2.0",
+    "tsup": "^6.5.0",
+    "typescript": "^4.9.4"
+  }
+}
