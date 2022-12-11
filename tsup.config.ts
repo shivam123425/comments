@@ -1,4 +1,5 @@
 import type { Options } from "tsup";
+import svgrPlugin from "esbuild-plugin-svgr";
 
 const config: Options = {
   entry: ["src/index.tsx"],
@@ -12,6 +13,7 @@ const config: Options = {
   esbuildOptions(options, context) {
     options.outbase = "./";
   },
+  esbuildPlugins: [svgrPlugin()],
 };
 
 export default config;

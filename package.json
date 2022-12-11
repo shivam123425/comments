@@ -23,8 +23,10 @@
   },
   "homepage": "https://github.com/shivam123425/react-preview-comments#readme",
   "devDependencies": {
+    "@stitches/react": "^1.2.8",
     "@types/node": "^18.11.13",
     "@types/react": "^18.0.26",
+    "esbuild-plugin-svgr": "^1.0.1",
     "react": "^18.2.0",
     "tsup": "^6.5.0",
     "typescript": "^4.9.4"
