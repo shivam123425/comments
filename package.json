@@ -22,13 +22,43 @@
     "url": "https://github.com/shivam123425/react-preview-comments/issues"
   },
   "homepage": "https://github.com/shivam123425/react-preview-comments#readme",
+  "engines": {
+    "node": ">=10.16.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "pretty-quick --staged",
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
   "devDependencies": {
     "@stitches/react": "^1.2.8",
     "@types/node": "^18.11.13",
     "@types/react": "^18.0.26",
+    "@typescript-eslint/eslint-plugin": "^5.46.0",
+    "@typescript-eslint/parser": "^5.46.0",
     "esbuild-plugin-svgr": "^1.0.1",
+    "eslint": "^8.29.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.11",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.1.0",
     "react": "^18.2.0",
     "tsup": "^6.5.0",
     "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "prettier": "^2.8.1"
   }
 }

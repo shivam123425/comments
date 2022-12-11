@@ -23,6 +23,8 @@ const StyledButton = styled("button", {
 
 export const Button = (props: ButtonProps) => {
   return (
-    <StyledButton data-variant={props.variant}>{props.children}</StyledButton>
+    <StyledButton data-variant={props.variant}>
+      Hello {props.children}
+    </StyledButton>
   );
 };
