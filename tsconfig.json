@@ -23,7 +23,9 @@
       "@styles": ["src/styles"],
       "@styles/*": ["src/styles/*"],
       "@components": ["src/components"],
-      "@components/*": ["src/components/*"]
+      "@components/*": ["src/components/*"],
+      "@features": ["src/features"],
+      "@features/*": ["src/features/*"]
     }
   },
   "include": ["src"],
