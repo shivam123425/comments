@@ -1,12 +1,7 @@
 import React from "react";
-import { Button } from "react-preview-comments";
 
 const TestPage = () => {
-  return (
-    <div>
-      <Button variant="secondary">Hello</Button>
-    </div>
-  );
+  return <div>Test page</div>;
 };
 
 export default TestPage;
