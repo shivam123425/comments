@@ -8,8 +8,9 @@ const config: Options = {
   clean: true,
   dts: true,
   treeshake: true,
-  format: ["esm", "cjs"],
+  format: ["cjs"],
   minify: true,
+  outDir: "./extension/scripts/content-script",
   esbuildOptions(options, context) {
     options.outbase = "./";
   },
