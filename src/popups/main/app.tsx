@@ -7,7 +7,7 @@ const MainPopup = () => {
 
   return (
     <PopupContainer>
-      <Button variant="primary">Click here 2</Button>
+      <Button variant="primary">Click here 3</Button>
     </PopupContainer>
   );
 };

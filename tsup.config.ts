@@ -2,7 +2,7 @@ import type { Options } from "tsup";
 import svgrPlugin from "esbuild-plugin-svgr";
 
 const config: Options = {
-  entry: ["src/popups/main/index.tsx"],
+  entry: ["src/popups/main/index.tsx", "src/worker.ts"],
   splitting: false,
   sourcemap: true,
   clean: true,
