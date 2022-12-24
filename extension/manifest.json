@@ -5,6 +5,7 @@
   "version": "1.0",
   "action": {
     "default_popup": "popups/main.html",
-    "default_icon": "images/default_icon.png"
+    "default_icon": "images/default_icon.png",
+    "default_title": "Comments"
   }
 }

@@ -2,17 +2,17 @@ import type { Options } from "tsup";
 import svgrPlugin from "esbuild-plugin-svgr";
 
 const config: Options = {
-  entry: ["src/index.tsx"],
+  entry: ["src/popups/main/index.tsx"],
   splitting: false,
   sourcemap: true,
   clean: true,
-  dts: true,
   treeshake: true,
-  format: ["cjs"],
+  format: ["iife"],
   minify: true,
-  outDir: "./extension/scripts/content-script",
-  esbuildOptions(options, context) {
-    options.outbase = "./";
+  target: ["chrome58"],
+  outDir: "./extension/scripts",
+  esbuildOptions(options) {
+    options.outbase = "./src";
   },
   esbuildPlugins: [svgrPlugin()],
 };

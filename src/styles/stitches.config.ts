@@ -1,6 +1,6 @@
 import { createStitches } from "@stitches/react";
 
-export const { styled, theme, css } = createStitches({
+export const { styled, theme, css, globalCss } = createStitches({
   media: {
     bp1: "(min-width: 640px)",
     bp2: "(min-width: 768px)",
@@ -8,28 +8,51 @@ export const { styled, theme, css } = createStitches({
   },
   utils: {
     // Abbreviated margin properties
-    m: (value: number) => ({
+    m: (value: number | string) => ({
       margin: value,
     }),
-    mt: (value: number) => ({
+    mt: (value: number | string) => ({
       marginTop: value,
     }),
-    mr: (value: number) => ({
+    mr: (value: number | string) => ({
       marginRight: value,
     }),
-    mb: (value: number) => ({
+    mb: (value: number | string) => ({
       marginBottom: value,
     }),
-    ml: (value: number) => ({
+    ml: (value: number | string) => ({
       marginLeft: value,
     }),
-    mx: (value: number) => ({
+    mx: (value: number | string) => ({
       marginLeft: value,
       marginRight: value,
     }),
-    my: (value: number) => ({
+    my: (value: number | string) => ({
       marginTop: value,
       marginBottom: value,
+    }),
+    p: (value: number | string) => ({
+      padding: value,
+    }),
+    pt: (value: number | string) => ({
+      paddingTop: value,
+    }),
+    pr: (value: number | string) => ({
+      paddingRight: value,
+    }),
+    pb: (value: number | string) => ({
+      paddingBottom: value,
+    }),
+    pl: (value: number | string) => ({
+      paddingLeft: value,
+    }),
+    px: (value: number | string) => ({
+      paddingLeft: value,
+      paddingRight: value,
+    }),
+    py: (value: number | string) => ({
+      paddingTop: value,
+      paddingBottom: value,
     }),
 
     // A property for applying width/height together
@@ -48,4 +71,8 @@ export const { styled, theme, css } = createStitches({
       borderRadius: value,
     }),
   },
+});
+
+export const globalStyles = globalCss({
+  "*": { margin: 0, padding: 0, boxSizing: "border-box" },
 });

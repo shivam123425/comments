@@ -7,6 +7,8 @@ const StyledButton = styled("button", {
   borderRadius: "9999px",
   fontSize: "13px",
   border: "0",
+  position: "relative",
+  p: "8px 12px",
   "&::before": {
     content: `''`,
     display: "block",
