@@ -1,2 +1,3 @@
-# react-preview-comments
-A library to enable realtime feedbacks in the form of preview comments
+# Comments
+
+Allows you to add live comments to any oage you want via a browser extension
