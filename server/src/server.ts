@@ -1,8 +1,27 @@
-import express from "express";
-import { envs } from "@config";
+import { envs, connectDB } from "@config";
+import express, { Request, Response, NextFunction } from "express";
+require("express-async-errors");
+import cors from "cors";
+import helmet from "helmet";
+import { projectRouter } from "@routes";
 
 const app = express();
 
-app.listen(envs.PORT, () => {
-  console.log(`Server is running at port ${envs.PORT}`);
+app.use(helmet());
+app.use(cors());
+
+app.use(express.json());
+
+// Initialise routes
+app.use("/project", projectRouter);
+
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  next(err);
 });
+
+(async () => {
+  await connectDB();
+  app.listen(envs.PORT, () => {
+    console.log(`Server is running at port ${envs.PORT}`);
+  });
+})();
