@@ -1,6 +1,6 @@
 import { prisma } from "@config";
 import bcryptjs from "bcryptjs";
-import { ICreateUser } from "@validations";
+import { ICreateUser, ILoginUser } from "@validations";
 import { Request, Response } from "express";
 
 export const createUser = async (
@@ -17,7 +17,37 @@ export const createUser = async (
       email,
       password: hash,
     },
+    select: {
+      password: false,
+      id: true,
+      email: true,
+      name: true,
+    },
   });
 
-  res.status(201).json({ data: user });
+  res.status(201).json({ data: user, success: true });
+};
+
+export const loginUser = async (
+  req: Request<{}, {}, ILoginUser["body"], {}>,
+  res: Response
+) => {
+  const { email, password } = req.body;
+
+  const existingUser = await prisma.user.findUniqueOrThrow({
+    where: {
+      email,
+    },
+  });
+  const isPasswordAMatch = await bcryptjs.compare(
+    password,
+    existingUser.password
+  );
+  if (!isPasswordAMatch) {
+    // throw invalid credential error
+    throw new Error("Invalid email or password");
+  }
+
+  // TODO - Attach jwt in a cookie
+  res.json({ success: true });
 };
