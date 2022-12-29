@@ -3,7 +3,7 @@ import express, { Request, Response, NextFunction } from "express";
 require("express-async-errors");
 import cors from "cors";
 import helmet from "helmet";
-import { projectRouter } from "@routes";
+import { projectRouter, userRouter } from "@routes";
 
 const app = express();
 
@@ -14,6 +14,7 @@ app.use(express.json());
 
 // Initialise routes
 app.use("/project", projectRouter);
+app.use("/user", userRouter);
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   next(err);
