@@ -1,4 +1,4 @@
-import { envs, connectDB } from "@config";
+import { envs, connectDB, initAWS } from "@config";
 import express, { Request, Response, NextFunction } from "express";
 require("express-async-errors");
 import cors from "cors";
@@ -30,6 +30,7 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 });
 
 (async () => {
+  await initAWS();
   await connectDB();
   app.listen(envs.PORT, () => {
     console.log(`Server is running at port ${envs.PORT}`);

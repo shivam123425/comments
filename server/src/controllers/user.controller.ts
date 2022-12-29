@@ -2,6 +2,7 @@ import { prisma } from "@config";
 import bcryptjs from "bcryptjs";
 import { ICreateUser, ILoginUser } from "@validations";
 import { Request, Response } from "express";
+import { createAuthToken } from "@services/token.manager";
 
 export const createUser = async (
   req: Request<{}, {}, ICreateUser["body"], {}>,
@@ -44,10 +45,13 @@ export const loginUser = async (
     existingUser.password
   );
   if (!isPasswordAMatch) {
-    // throw invalid credential error
+    // TODO - Throw custom error objects which has status as well
     throw new Error("Invalid email or password");
   }
 
-  // TODO - Attach jwt in a cookie
+  const authToken = createAuthToken({
+    id: existingUser.id,
+  });
+  res.setHeader("Authorization", authToken);
   res.json({ success: true });
 };
