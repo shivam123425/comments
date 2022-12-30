@@ -22,7 +22,7 @@ model User {
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
 
-  @@index([id, email])
+  @@index([id])
 }
 
 model Project {
@@ -35,7 +35,8 @@ model Project {
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
 
-  @@index([id, creatorId])
+  @@index([id])
+  @@index([creatorId])
 }
 
 model Comment {
@@ -50,7 +51,8 @@ model Comment {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  @@index([id, projectId])
+  @@index([id])
+  @@index([projectId])
 }
 
 model Reply {
@@ -64,5 +66,6 @@ model Reply {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@index([id, commentId])
+  @@index([id])
+  @@index([commentId])
 }
