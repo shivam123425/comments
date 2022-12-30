@@ -11,14 +11,16 @@ datasource db {
 }
 
 model User {
-  id       Int       @id @default(autoincrement())
-  name     String    @db.VarChar(255)
-  email    String    @unique @db.VarChar(255)
-  password String    @db.VarChar(255)
-  avatar   String?   @db.Text
-  projects Project[]
-  Comment  Comment[]
-  Reply    Reply[]
+  id        Int       @id @default(autoincrement())
+  name      String    @db.VarChar(255)
+  email     String    @unique @db.VarChar(255)
+  password  String    @db.VarChar(255)
+  avatar    String?   @db.Text
+  projects  Project[]
+  Comment   Comment[]
+  Reply     Reply[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 
   @@index([id, email])
 }
@@ -30,31 +32,37 @@ model Project {
   creatorId  Int
   name       String    @db.VarChar(255)
   comments   Comment[]
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
 
   @@index([id, creatorId])
 }
 
 model Comment {
-  id          Int     @id @default(autoincrement())
-  project     Project @relation(fields: [projectId], references: [id])
-  creator     User    @relation(fields: [creatorId], references: [id])
+  id          Int      @id @default(autoincrement())
+  project     Project  @relation(fields: [projectId], references: [id])
+  creator     User     @relation(fields: [creatorId], references: [id])
   creatorId   Int
   projectId   Int
   coordinates Int[]
   dimensions  Int[]
   replies     Reply[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   @@index([id, projectId])
 }
 
 model Reply {
-  id        Int     @id @default(autoincrement())
-  comment   Comment @relation(fields: [commentId], references: [id])
+  id        Int      @id @default(autoincrement())
+  comment   Comment  @relation(fields: [commentId], references: [id])
   commentId Int
-  author    User    @relation(fields: [authorId], references: [id])
+  author    User     @relation(fields: [authorId], references: [id])
   authorId  Int
-  body      String  @db.Text
-  likes     Int     @default(0)
+  body      String   @db.Text
+  likes     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@index([id, commentId])
 }
