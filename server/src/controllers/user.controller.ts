@@ -58,7 +58,7 @@ export const loginUser = async (
 };
 
 export const getLoggedInUserDetails = async (req: Request, res: Response) => {
-  const loggedInUser = await getLoggedInUser(req);
+  const loggedInUser = await getLoggedInUser(req, true);
 
   res.json({ success: true, data: loggedInUser });
 };
