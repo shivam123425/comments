@@ -15,7 +15,7 @@ export const createProject = async (
       creatorId: loggedInUser.id,
     },
   });
-  res.json({ success: true, data: project });
+  res.status(201).json({ success: true, data: project });
 };
 
 export const getProjectById = async (

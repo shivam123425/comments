@@ -45,7 +45,7 @@ export const createComment = async (
         },
       },
     });
-    res.json({
+    res.status(201).json({
       success: true,
       data: updatedComment,
     });
