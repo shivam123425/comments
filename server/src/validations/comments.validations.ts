@@ -15,3 +15,11 @@ export const createCommentSchema = z.object({
 });
 
 export type ICreateComment = z.infer<typeof createCommentSchema>;
+
+export const getCommentsByProjectIdSchema = z.object({
+  params: z.object({
+    projectId: z.string({ required_error: "Project id is required" }),
+  }),
+});
+
+export type IGetCommentsByProjectId = z.infer<typeof getCommentsByProjectIdSchema>;

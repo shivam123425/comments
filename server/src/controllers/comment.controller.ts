@@ -1,5 +1,8 @@
 import { prisma } from "@config";
-import { ICreateComment } from "@validations/comments.validations";
+import {
+  ICreateComment,
+  IGetCommentsByProjectId,
+} from "@validations/comments.validations";
 import { Request, Response } from "express";
 import { getLoggedInUser } from "src/helpers/auth";
 
@@ -47,4 +50,19 @@ export const createComment = async (
       data: updatedComment,
     });
   });
+};
+
+export const getCommentsByProjectId = async (
+  req: Request<IGetCommentsByProjectId["params"]>,
+  res: Response
+) => {
+  const projectId = parseInt(req.params.projectId);
+
+  const comments = await prisma.comment.findMany({
+    where: {
+      projectId,
+    },
+  });
+
+  res.json({ success: true, data: comments });
 };
