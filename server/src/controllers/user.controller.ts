@@ -3,6 +3,7 @@ import bcryptjs from "bcryptjs";
 import { ICreateUser, ILoginUser } from "@validations";
 import { Request, Response } from "express";
 import { createAuthToken } from "@services/token.manager";
+import { getLoggedInUser } from "src/helpers/auth";
 
 export const createUser = async (
   req: Request<{}, {}, ICreateUser["body"], {}>,
@@ -49,9 +50,15 @@ export const loginUser = async (
     throw new Error("Invalid email or password");
   }
 
-  const authToken = createAuthToken({
+  const authToken = await createAuthToken({
     id: existingUser.id,
   });
   res.setHeader("Authorization", authToken);
   res.json({ success: true });
+};
+
+export const getLoggedInUserDetails = async (req: Request, res: Response) => {
+  const loggedInUser = await getLoggedInUser(req);
+
+  res.json({ success: true, data: loggedInUser });
 };
