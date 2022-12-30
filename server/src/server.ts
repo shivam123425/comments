@@ -3,7 +3,7 @@ import express, { Request, Response, NextFunction } from "express";
 require("express-async-errors");
 import cors from "cors";
 import helmet from "helmet";
-import { projectRouter, userRouter } from "@routes";
+import { projectRouter, userRouter, commentRouter } from "@routes";
 import { z } from "zod";
 
 const app = express();
@@ -16,6 +16,7 @@ app.use(express.json());
 // Initialise routes
 app.use("/project", projectRouter);
 app.use("/user", userRouter);
+app.use("/comment", commentRouter);
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   let errorPayload: { error: true; message: string; issues?: z.ZodIssue[] } = {

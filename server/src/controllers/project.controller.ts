@@ -1,8 +1,7 @@
 import { prisma } from "@config";
 import { ICreateProject, IGetProject } from "@validations";
-import { Request, Response, NextFunction } from "express";
+import { Request, Response } from "express";
 import { getLoggedInUser } from "src/helpers/auth";
-import { z } from "zod";
 
 export const createProject = async (
   req: Request<{}, {}, ICreateProject["body"], {}>,
