@@ -9,14 +9,13 @@ export const createUser = async (
   req: Request<{}, {}, ICreateUser["body"], {}>,
   res: Response
 ) => {
-  const { name, email, password } = req.body;
+  const { password, ...payload } = req.body;
   const salt = await bcryptjs.genSalt(12);
   const hash = await bcryptjs.hash(password, salt);
 
   const user = await prisma.user.create({
     data: {
-      name,
-      email,
+      ...payload,
       password: hash,
     },
     select: {
@@ -24,6 +23,7 @@ export const createUser = async (
       id: true,
       email: true,
       name: true,
+      avatar: true,
     },
   });
 

@@ -35,6 +35,7 @@ export const getProjectById = async (
           password: false,
           name: true,
           id: true,
+          avatar: true,
         },
       },
     },

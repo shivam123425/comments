@@ -10,6 +10,7 @@ export const createUserSchema = z.object({
   body: z.object({
     name: z.string({ required_error: "A user name is required" }),
     email: z.string({ required_error: "A valid email is required" }).email(),
+    avatar: z.string().url().optional(),
     password: passwordValidation,
   }),
 });
