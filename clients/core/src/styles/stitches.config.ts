@@ -6,6 +6,13 @@ export const { styled, theme, css, globalCss } = createStitches({
     bp2: "(min-width: 768px)",
     bp3: "(min-width: 1024px)",
   },
+  theme: {
+    colors: {
+      black: "#222",
+      grey: "#333",
+      white: "#fff",
+    },
+  },
   utils: {
     // Abbreviated margin properties
     m: (value: number | string) => ({

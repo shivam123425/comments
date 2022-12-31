@@ -1,5 +1,4 @@
 import React from "react";
-import { ButtonProps } from "./button.types";
 import { styled } from "@styles";
 
 const StyledButton = styled("button", {
@@ -8,6 +7,8 @@ const StyledButton = styled("button", {
   fontSize: "13px",
   border: "0",
   position: "relative",
+  cursor: "pointer",
+  zIndex: 1,
   p: "8px 12px",
   "&::before": {
     content: `''`,
@@ -23,8 +24,10 @@ const StyledButton = styled("button", {
   },
 });
 
+interface ButtonProps extends React.ComponentProps<typeof StyledButton> {
+  children: React.ReactNode;
+}
+
 export const Button = (props: ButtonProps) => {
-  return (
-    <StyledButton data-variant={props.variant}>{props.children}</StyledButton>
-  );
+  return <StyledButton>{props.children}</StyledButton>;
 };
