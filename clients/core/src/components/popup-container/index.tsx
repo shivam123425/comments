@@ -1,7 +1,7 @@
 import { styled } from "@styles";
 
 export const PopupContainer = styled("main", {
-  minWidth: 400,
+  minWidth: 100,
   minHeight: 200,
   position: "relative",
 });

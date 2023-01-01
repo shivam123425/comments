@@ -8,9 +8,12 @@ export const { styled, theme, css, globalCss } = createStitches({
   },
   theme: {
     colors: {
-      black: "#222",
-      grey: "#333",
-      white: "#fff",
+      black: "#222831",
+      grey: "#393E46",
+      teal: "#00ADB5",
+      mint: "#A5F1E9",
+      wintage: "#0E5E6F",
+      white: "#EEEEEE",
     },
   },
   utils: {
@@ -82,4 +85,11 @@ export const { styled, theme, css, globalCss } = createStitches({
 
 export const globalStyles = globalCss({
   "*": { margin: 0, padding: 0, boxSizing: "border-box" },
+  "ul,ol": {
+    listStyle: "none",
+  },
+  a: {
+    textDecoration: "none",
+    color: "$teal",
+  },
 });
