@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { loginValidationSchema } from "./validations";
+import { loginValidationSchema, registerValidationSchema } from "./validations";
 
 export enum AuthModes {
   REGISTER,
@@ -11,3 +11,4 @@ export interface IAuthProps {
 }
 
 export type LoginValues = z.infer<typeof loginValidationSchema>;
+export type RegisterValues = z.infer<typeof registerValidationSchema>;

@@ -1,17 +1,26 @@
+import dynamic from "next/dynamic";
+import Link from "next/link";
 import React from "react";
-import { IAuthProps } from "./auth.types";
-import { LoginForm } from "./loginForm";
+import { AuthModes, IAuthProps } from "./auth.types";
 
-export const Auth = (props: IAuthProps) => {
+const LoginForm = dynamic(() => import("./loginForm"));
+const RegisterForm = dynamic(() => import("./registerForm"));
+
+export const Auth = ({ mode }: IAuthProps) => {
   return (
     <div className="w-full max-w-md p-6 bg-black rounded-md">
       <div className="flex justify-between mb-6">
         <h1 className="text-2xl text-white">Sign in</h1>
-        <a className="text-teal text-sm no-underline">
-          I don't have an account
-        </a>
+        <Link
+          href={mode === AuthModes.LOGIN ? "/register" : "/login"}
+          className="text-teal text-sm no-underline"
+        >
+          {mode === AuthModes.LOGIN
+            ? "I don't have an account"
+            : "I have an account"}
+        </Link>
       </div>
-      <LoginForm />
+      {mode === AuthModes.LOGIN ? <LoginForm /> : <RegisterForm />}
     </div>
   );
 };
