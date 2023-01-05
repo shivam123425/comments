@@ -8,10 +8,10 @@ interface IInputProps extends React.HTMLProps<HTMLInputElement> {
   label: string;
 }
 
-export const Input = (props: IInputProps) => {
+const InputBase = (props: IInputProps, ref: React.Ref<HTMLInputElement>) => {
   const { className, id, errorMessage, error, label, ...inputProps } = props;
   return (
-    <div className="w-full">
+    <div className="w-full relative mb-6">
       <div className="relative h-12">
         <input
           className={clsx(
@@ -20,6 +20,7 @@ export const Input = (props: IInputProps) => {
             className
           )}
           id={id}
+          ref={ref}
           {...inputProps}
         />
         <label
@@ -30,8 +31,10 @@ export const Input = (props: IInputProps) => {
         </label>
       </div>
       {errorMessage && (
-        <div className="text-sm text-red mb-4 px-1 pt-2">{errorMessage}</div>
+        <div className="text-sm text-error px-1 absolute bottom-[-24px]">{errorMessage}</div>
       )}
     </div>
   );
 };
+
+export const Input = React.forwardRef(InputBase);

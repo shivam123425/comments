@@ -20,7 +20,7 @@ module.exports = {
         mint: "#A5F1E9",
         wintage: "#0E5E6F",
         white: "#EEEEEE",
-        red: "#ea1537",
+        error: "#ff8a8a",
       },
     },
   },
